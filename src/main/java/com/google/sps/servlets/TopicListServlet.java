@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //get all topic from db
-@WebServlet("/list-tasks")
-public final class TopicListServlet extends HttpServlet {
+@WebServlet("/list-topics")
 
+public final class TopicListServlet extends HttpServlet {   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();

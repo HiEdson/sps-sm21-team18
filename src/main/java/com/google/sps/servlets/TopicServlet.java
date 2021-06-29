@@ -16,7 +16,6 @@ import org.jsoup.safety.Whitelist;
 //save the topic in DB
 @WebServlet("/new-topic")
 public class TopicServlet extends HttpServlet {
-
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
