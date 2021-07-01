@@ -1,7 +1,4 @@
-META-INF/resources/index.html
-com/google/sps/ServerMain.class
-META-INF/resources/script.js
 com/google/sps/servlets/TopicServlet.class
-META-INF/resources/style.css
+com/google/sps/ServerMain.class
 com/google/sps/servlets/TopicListServlet.class
 com/google/sps/data/Topic.class

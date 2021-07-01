@@ -12,3 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//fetching data and display then in the list-topics
+async function topics() {
+    const getTopics = await fetch('/list-topics');
+    const allTopics = await getTopics.json();
+    //const myObj = await JSON.parse(allThoughs);
+
+    //const domElement = document.getElementById("allTopics");
+    allTopics.forEach(function (o) {
+        document.getElementById("allTopics").innerHTML += '<li>' + '<b>' + o.name + '</b>' + '   ' + o.description + '<br>' + '</li>';
+    });
+        domElement.innerHTML = allTopics[Object.keys(allTopics)[0]];
+    console.log(allTopics);
+    //allThoughs[Object.keys(allThoughs)[t]];
+
+    //console.log(allThoughs[Object.keys(allThoughs)[t]]);
+    //console.log(myObj.though1); allThoughs.though1;
+}

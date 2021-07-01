@@ -36,7 +36,9 @@ public class TopicServlet extends HttpServlet {
             .build();
     datastore.put(topicEntity);
 
-    response.sendRedirect("/index.html");
+    //System.out.println("Until here, just fine");
+    response.sendRedirect("/");
+    
   }
 }
 
