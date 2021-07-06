@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>SPS summer 21 team 18</title>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-  </head>
+</head>
 
-  <header>
-      <h1>Homepage</h1>
-  </header>
 
-  <article>
-      <header>
-          <h2>Let us help you</h2>
-          <p>Discover topics related to your query, find local doctors, and learn more in our discussion pages</p>
-          <div id="img">
-          <p><img src = "https://images.theconversation.com/files/59470/original/bmc3zndq-1411073854.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop" alt = "Doctors" width = "250" height = "250"></p>
-          </div>
-      </header>
-  </article>
+<body onload="createMap();">
+    <header>
+        <h1>Homepage</h1>
+    </header>
 
-  <body>
+    <article>
+        <header>
+            <h2>Let us help you</h2>
+            <p>Discover topics related to your query, find local doctors, and learn more in our discussion pages</p>
+            <div id="img">
+                <p><img src="https://images.theconversation.com/files/59470/original/bmc3zndq-1411073854.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
+                        alt="Doctors" width="250" height="250"></p>
+            </div>
+        </header>
+    </article>
+
     <h1>create a Topic from team18</h1>
 
     <form method="POST" action="/new-topic">
-      <input type="text" name="name" />
-      <input type="text" name="description" />
-      <br/>
-      <button>Submit</button>
+        <input type="text" name="name" />
+        <input type="text" name="description" />
+        <br />
+        <button>Submit</button>
     </form>
-  </body>
 
-    <body onload="createMap();">
-        <div id="map"></div>
-    </body>
 
-    <body>
-        <div id="map-text">
+    <div id="map"></div>
+
+    <div id="map-text">
         <h3>
             Find providers near you
-         </h3>
-         </div>
-    </body>
+        </h3>
+    </div>
+</body>
 
 </html>
