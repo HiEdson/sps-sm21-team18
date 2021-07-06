@@ -29,6 +29,8 @@ public final class TopicListServlet extends HttpServlet {
     List<Topic> allTopics = new ArrayList<>();
     while (results.hasNext()) {
       Entity entity = results.next();
+      //Entity task = datastore.get();
+      //System.out.println(task);
 
       long id = entity.getKey().getId();
       String name = entity.getString("name");
