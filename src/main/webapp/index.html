@@ -2,25 +2,47 @@
 <html>
 
 <head>
-<<<<<<< HEAD
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
   <meta charset="UTF-8">
   <title>SPS summer 21 team 18</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
 
-<body onload="topics()">
+<body onload="initAll()">
   <h1>Display all the Topics</h1>
-  <div >
-    
+  <div>
     <ul>
       <li id="allTopics">
       </li>
     </ul>
   </div>
 
-  <h1>create a Topic from team18</h1>
+  <header>
+    <h1>Homepage</h1>
+  </header>
 
+  <article>
+    <header>
+      <h2>Let us help you</h2>
+      <p>Discover topics related to your query, find local doctors, and learn more in our discussion pages</p>
+      <div id="img">
+        <p><img
+            src="https://images.theconversation.com/files/59470/original/bmc3zndq-1411073854.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
+            alt="Doctors" width="250" height="250"></p>
+      </div>
+    </header>
+  </article>
+
+  <div id="map"></div>
+
+  <div id="map-text">
+    <h3>
+      Find providers near you
+    </h3>
+  </div>
+
+  <h1>create a Topic from team18</h1>
   <form method="POST" action="/new-topic">
     <input type="text" name="name" />
     <input type="text" name="description" />
@@ -28,57 +50,12 @@
     <button>Submit</button>
   </form>
 
-  
-
-
+  <!--Search for a individual topic-->
   <form method="GET" action="/one-topic">
-     <input type="text" name="name" />
-      <button>Choose Topic</button>
+    <input type="text" name="name" />
+    <button>search</button>
   </form>
 
-=======
-    <meta charset="UTF-8">
-    <title>SPS summer 21 team 18</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
-
-
-<body onload="createMap();">
-    <header>
-        <h1>Homepage</h1>
-    </header>
-
-    <article>
-        <header>
-            <h2>Let us help you</h2>
-            <p>Discover topics related to your query, find local doctors, and learn more in our discussion pages</p>
-            <div id="img">
-                <p><img src="https://images.theconversation.com/files/59470/original/bmc3zndq-1411073854.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
-                        alt="Doctors" width="250" height="250"></p>
-            </div>
-        </header>
-    </article>
-
-    <h1>create a Topic from team18</h1>
-
-    <form method="POST" action="/new-topic">
-        <input type="text" name="name" />
-        <input type="text" name="description" />
-        <br />
-        <button>Submit</button>
-    </form>
-
-
-    <div id="map"></div>
-
-    <div id="map-text">
-        <h3>
-            Find providers near you
-        </h3>
-    </div>
->>>>>>> 92fea2821e834823c5d1a5a57d7c5241764ec441
 </body>
 
 </html>

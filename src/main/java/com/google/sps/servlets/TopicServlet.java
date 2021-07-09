@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
-//save the topic in DB
+//save new topic in DB
 @WebServlet("/new-topic")
 public class TopicServlet extends HttpServlet {
   @Override
