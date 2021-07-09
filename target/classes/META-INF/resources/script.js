@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 //fetching data and display then in the list-topics
 async function topics() {
     const getTopics = await fetch('/list-topics');
@@ -44,3 +45,10 @@ async function oneTopic() {
 
 //display the element in the page topic etc....
 //try https://docs.oracle.com/javaee/5/api/javax/servlet/RequestDispatcher.html
+=======
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 37.422, lng: -122.084}, zoom: 16});
+}
+>>>>>>> 92fea2821e834823c5d1a5a57d7c5241764ec441
