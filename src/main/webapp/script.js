@@ -5,21 +5,10 @@ async function topics() {
   const allTopics = await getTopics.json();
 
   allTopics.forEach(function (o) {
-    document.getElementById("allTopics").innerHTML += '<a href=\'/one-topic?name=escoliosis\'>' + '<li>' + '<b>' + o.name + '</b>' + '   ' + o.description + '<br>' + '</li>' + '</a>';
+    document.getElementById("allTopics").innerHTML += '<a href="/topic.html?name=' + o.name + '">' + '<li>' + '<b>' + o.name + '</b>' + '   ' + o.description + '<br>' + '</li>' + '</a>';
+    //document.getElementById("allTopics").innerHTML += '<a href="/one-topic?name='+o.name + '" + "onclick="return getPar();" +>' + '<li>' + '<b>' + o.name + '</b>' + '   ' + o.description + '<br>' + '</li>' + '</a>';
   });
   console.log(allTopics);
-}
-
-//display one topic in a new page /one-topic?name=topicname
-async function oneTopic() {
-  const OneTopic = await fetch('/one-topic?name=covid');
-  const specificTopic = await OneTopic.json();
-
-  specificTopic.forEach(function (o) {
-    document.getElementById("oneTopicTitle").innerHTML += o.name;
-    document.getElementById("oneTopicDescrip").innerHTML += o.description;
-  });
-  console.log(specificTopic);
 }
 
 function createMap() {
