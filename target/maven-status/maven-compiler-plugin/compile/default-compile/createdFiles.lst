@@ -1,5 +1,5 @@
-com/google/sps/ServerMain.class
 com/google/sps/servlets/OneTopic.class
 com/google/sps/servlets/TopicServlet.class
 com/google/sps/servlets/TopicListServlet.class
+com/google/sps/ServerMain.class
 com/google/sps/data/Topic.class

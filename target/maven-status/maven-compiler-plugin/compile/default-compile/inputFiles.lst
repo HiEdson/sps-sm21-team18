@@ -1,5 +1,8 @@
 /home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/ServerMain.java
+/home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/servlets/Contribution.java
 /home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/servlets/OneTopic.java
+/home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/data/Contribution.java
 /home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/servlets/TopicServlet.java
 /home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/data/Topic.java
 /home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/servlets/TopicListServlet.java
+/home/ecasimiro/sps-sm21-team18/src/main/java/com/google/sps/servlets/getContrib.java

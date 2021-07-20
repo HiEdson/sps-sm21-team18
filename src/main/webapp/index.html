@@ -2,60 +2,100 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
   <meta charset="UTF-8">
-  <title>Health A-Z team 18</title>
+  <title>Health A-Z, team 18</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
 </head>
 
 <body onload="initAll()">
-  <h1>Display all the Topics</h1>
-  <div>
-    <ul>
-      <li id="allTopics">
+  <nav>
+    <div class="logo">
+      <p>HEALTH A-Z</p>
+    </div>
+    <div class="hamburger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#ILLNESSES">ILLNESSES</a></li>
       </li>
+      <!--li><a href="#">IMAGE BASED DIADNOSIS</a></li-->
+      <li><a href="#">US</a></li>
+      <!--li><button class="newTopic-button" href="#">CREATE NEW TOPIC</button></li-->
+      <li><button class="join-button" href="#">Join</button></li>
     </ul>
-  </div>
+  </nav>
 
-  <header>
-    <h1>Homepage</h1>
-  </header>
+  <div>
+    <div id="startDiv">
+      <img id="imgIndex" src="https://nanha.org/wp-content/uploads/2018/01/Diversity-in-Nursing.jpg" alt="Doctors">
+      <p id="startDivText"><i class="arrow"></i></p>
+    </div>
 
-  <article>
-    <header>
-      <h2>Let us help you</h2>
-      <p>Discover topics related to your query, find local doctors, and learn more in our discussion pages</p>
-      <div id="img">
-        <p><img
-            src="https://images.theconversation.com/files/59470/original/bmc3zndq-1411073854.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
-            alt="Doctors" width="250" height="250"></p>
+    <div style="text-align: center; margin-top: 2%;" id="ILLNESSES">
+      <h4>Discover topics related to your query, find local doctors, and learn more in our discussion pages</h4>
+      <div>
+        <h4 style="text-align: center; margin-top: 2%;">All available Topics</h4>
+        <form class="search" method="GET" action="topic.html" style="margin:auto;max-width:300px">
+          <input type="text" placeholder="Search.." name="name">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <ul id="allTopics" class="cards">
+        </ul>
       </div>
-    </header>
-  </article>
+      <h1>Is something missing? <button class="buttonDisplayForm" onclick="showForm();">create a new
+          topic</button></h1>
+      <div class="container" id="containerId">
+        <form method="POST" action="/new-topic">
+          <div id="foo" class="row">
+            <div class="col-25">
+              <label for="fname">Topic name</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="fname" name="name" placeholder="Topic name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="subject">Description</label>
+            </div>
+            <div class="col-75">
+              <textarea id="subject" name="description" placeholder="description..." style="height:200px"></textarea>
+            </div>
+          </div>
 
-  <div id="map"></div>
+          <div class="row">
+            <div class="col-25">
+              <label for="subject">Resources</label>
+            </div>
+            <div class="col-75">
+              <textarea id="subject" name="resources" placeholder="Resources..." style="height:200px"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
 
-  <div id="map-text">
-    <h3>
-      Find providers near you
-    </h3>
-  </div>
+    </div>
+    <script src="script.js"></script>
+    <p style=" text-align: center;  margin-top:10px; ">
+    <h5 style=" text-align: center; margin-bottom:10px">Developed by Google SPSers team 18, summer 2021</h5>
+    </p>
 
-  <h1>create a Topic from team18</h1>
-  <form method="POST" action="/new-topic">
-    <input type="text" name="name" />
-    <input type="text" name="description" />
-    <br />
-    <button>Submit</button>
-  </form>
-
-  <!--Search for a individual topic-->
-  <form method="GET" action="/one-topic">
-    <input type="text" name="name" />
-    <button>search</button>
-  </form>
-
+    <script>
+      const showForm = () => {
+        let element = document.getElementById("containerId");
+        element.style.display = 'block';
+        window.location.href = '#foo';
+      }
+      let element = document.getElementById("containerId");
+      element.style.display = 'none';
+    </script>
 </body>
 
 </html>

@@ -21,17 +21,15 @@ public class TopicServlet extends HttpServlet {
     // Sanitize user input to remove HTML tags and JavaScript.
     String name = Jsoup.clean(request.getParameter("name"), Whitelist.none());
     String description = Jsoup.clean(request.getParameter("description"), Whitelist.none());
+    String resources = Jsoup.clean(request.getParameter("resources"), Whitelist.none());
+
     // String user = get the current logged in user!
     long timestamp = System.currentTimeMillis();
-
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Topic");
     FullEntity topicEntity = Entity.newBuilder(keyFactory.newKey()).set("name", name).set("description", description)
-        // .set("user", blablabla)
-        .set("timestamp", timestamp).build();
+        .set("resources", resources).set("timestamp", timestamp).build();
     datastore.put(topicEntity);
-
-    // System.out.println("Until here, just fine");
     response.sendRedirect("/index.html");
 
   }

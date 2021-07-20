@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 //get all topic from db
 @WebServlet("/list-topics")
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public final class TopicListServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query = Query.newEntityQueryBuilder().setKind("Topic").setOrderBy(OrderBy.desc("timestamp")).build();
     QueryResults<Entity> results = datastore.run(query);
@@ -32,14 +35,15 @@ public final class TopicListServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String name = entity.getString("name");
       String description = entity.getString("description");
+      String resources = entity.getString("resources");
       long timestamp = entity.getLong("timestamp");
-
-      Topic oneTopic = new Topic(id, name, description, timestamp);
+      String formattedDate = sdf.format(new Date(timestamp));
+      Topic oneTopic = new Topic(id, name, description, resources, formattedDate);
       allTopics.add(oneTopic);
     }
-
     Gson gson = new Gson();
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(allTopics));
+    System.out.println(gson.toJson(allTopics));
   }
 }
