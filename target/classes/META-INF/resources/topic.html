@@ -3,191 +3,106 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>individual topic</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBriew9kNL5KzMqM4LwqUhYx_5LisEI2go"></script>
+  <title id='titleHtml'>Health A-Z, </title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="topicStyle.css">
 
   <script>
+    let a;
     async function main() {
+
       const urlParams = new URLSearchParams(window.location.search);
       const topicName = urlParams.get('name');
       console.log('the parameter is :' + topicName);
       const responseFromServer = await fetch("/one-topic?name=" + topicName);
       const topicData = await responseFromServer.json();
-      //const myJSON = JSON.stringify(topicData);
-      console.log("_____________");
-      console.log(topicData[0].name);
-      console.log("_____________");
-      //var stringified = JSON.stringify(data);
-      //var parsedObj = JSON.parse(stringified);
-      console.log('the data is :' + topicData);
-
-      // Use topicData to build the HTML of the page
+      document.getElementById('titleHtml').innerText += topicData[0].name; //tab title
       document.getElementById('topicTitle').innerText = topicData[0].name;
       document.getElementById('topicDescription').innerText = topicData[0].description;
-      //document.getElementById('id').innerText = topicData[0].id; //testing something
+      document.getElementById('displayRsrc').innerText += topicData[0].resources;
+      document.getElementById('date').innerText = topicData[0].date;
+      document.getElementById('postId').value = topicData[0].id; //testing something
+      document.getElementById('redirectName').value = topicData[0].name; //testing something
+      a = topicData[0].id;
+
+      const contribution = await fetch("/getcontrib?postId=" + a);
+      const contributionData = await contribution.json()
+      let count = Object.keys(contributionData)
+      console.log(Object.keys(contributionData).length);
+
+      for (let i = 0; i < Object.keys(contributionData).length; i++) {
+        if (contributionData[i].type === "comment") {
+          document.getElementsByClassName('quote')[0].innerHTML += '<p id="commentText">' + contributionData[i].subject + '</p>' +
+            '<figcaption id="commentAuthor"> &mdash; ' + contributionData[i].firstname + ', <span> at:  ' + contributionData[i].date + '</span>' +
+            '</figcaption>'
+        } else {
+          document.getElementsByClassName('moreresources')[0].innerHTML += '<p style="padding:10px;">' + contributionData[i].subject + '</p>' +
+            'Added by &mdash; ' + contributionData[i].firstname + ', <span> at:  ' + contributionData[i].date + '</span>' +
+            '<hr>'
+        }
+      }
     }
     main();
   </script>
 
-  <style>
-    body {
-      text-align: justify;
-    }
-
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-      height: 500px;
-    }
-
-    .more {
-      text-align: center;
-      text-decoration: underline;
-      text-decoration-color: #00ff99;
-    }
-
-    #displayRsrc {
-      padding-left: 10px;
-      padding-right: 10px;
-      text-align: justify;
-    }
-
-    .quote {
-      margin: 0;
-      background: #eee;
-      padding: 1em;
-      border-radius: 1em;
-    }
-
-    .quote figcaption,
-    .quote blockquote {
-      margin: 1em;
-    }
-
-    input[type=text],
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-    }
-
-    label {
-      padding: 12px 12px 12px 0;
-      display: inline-block;
-    }
-
-    input[type=submit] {
-      background-color: #00ff99;
-      ;
-      color: black;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      float: right;
-    }
-
-    input[type=submit]:hover {
-      background-color: #00ff99;
-    }
-
-    .container {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-
-    .col-25 {
-      float: left;
-      width: 25%;
-      margin-top: 6px;
-    }
-
-    .col-75 {
-      float: left;
-      width: 75%;
-      margin-top: 6px;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-    @media screen and (max-width: 600px) {
-
-      .col-25,
-      .col-75,
-      input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-      }
-    }
-  </style>
 </head>
 
-
 <body>
-  <!--p id="id"> the id is : </p-->
-  <div>
+  <nav>
+    <div class="logo">
+      <a href="index.html">HEALTH A-Z</a>
+    </div>
+    <div class="hamburger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#ILLNESSES">ILLNESSES</a></li>
+      </li>
+      <li><a href="#">US</a></li>
+      <!--li><button class="newTopic-button" href="#">CREATE NEW TOPIC</button></li-->
+      <li><button class="join-button" href="#">Join</button></li>
+    </ul>
+  </nav>
+
+  <div id="topicMainDiv" style="padding-top: 10%;">
     <h1 id="topicTitle" class="more"></h1>
-    <div>
+    <div style="padding: 4px;">
       <img
         src="https://www.who.int/images/default-source/health-topics/coronavirus/corona-virus-getty.tmb-1200v.jpg?Culture=en&sfvrsn=217a6a68_30">
+      <p id="date">Created at: </p>
     </div>
-    <h1 class="more">Description</h1>
-    <p id="topicDescription"></p>
 
+    <h1 class="more" style="padding-top: 10px">Description</h1>
+    <p id="topicDescription" style="padding-left: 10px;
+            padding-right: 10px;text-align: justify; padding-bottom: 10px;">
+    </p>
     <h1 class="more">Resources</h1>
-    <div id="displayRsrc">
-      <p>berries are among the world’s most popular health foods.
-
-        These sweet, nutritious foods are very easy to incorporate into your diet because they require little to
-        no preparation.
-
-        1. Apples
-        Apples are high in fiber, vitamin C, and numerous antioxidants. They are very filling and make the
-        perfect snack if you find yourself hungry between meals.
-
-        2. Avocados
-        Avocados are different than most fruits because they are loaded with healthy fats instead of carbs. Not
-        only are they creamy and tasty but also high in fiber, potassium, and vitamin C.
-
-        3. Bananas
-        Bananas are among the world’s best sources of potassium. They’re also high in vitamin B6 and fiber, as
-        well as convenient and portabl
-      </p>
+    <div class="moreresources" style="padding: 10px;"></div>
+    <div id="displayRsrc" style="padding-left: 10px;
+            padding-right: 10px;text-align: justify; padding-bottom: 10px;">
     </div>
     <div id="comment">
       <h2 class="more">comments</h2>
       <figure class="quote">
-        <blockquote>
-          But web browsers aren’t like web servers. If your back-end code is getting so big that it’s starting
-          to run
-          noticably slowly, you can
-        </blockquote>
-        <figcaption>
-          &mdash; Jeremy Keith
-        </figcaption>
       </figure>
     </div>
 
     <div class="container">
-      <form action="" method="POST">
+      <h2 class="more">Add resources or comment</h2>
+      <form action="/contribution" method="POST">
         <div class="row">
           <div class="col-25">
             <label for="fname">Full name</label>
           </div>
           <div class="col-75">
             <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <select name="type" id="">
+              <option value="comment">Comment</option>
+              <option value="resource">Resource</option>
+            </select>
           </div>
         </div>
         <div class="row">
@@ -195,8 +110,11 @@
             <label for="subject">Subject</label>
           </div>
           <div class="col-75">
-            <textarea id="subject" name="subject" placeholder="comment or add a resource ..."
-              style="height:200px"></textarea>
+            <textarea id="subject" name="subject" placeholder="go ahead..." maxlength="300" style="height:200px">
+                        </textarea>
+            <input id="postId" name="postId" type="hidden" value="">
+            <input id="redirectName" name="redirectName" type="hidden" value="">
+            <p name="postId" value=""></p>
           </div>
         </div>
         <div class="row">
@@ -204,11 +122,9 @@
         </div>
       </form>
     </div>
+
   </div>
-
+  <script src="script.js"></script>
 </body>
-
-
-<script src="script.js"></script>
 
 </html>
